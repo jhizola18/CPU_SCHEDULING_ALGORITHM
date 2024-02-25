@@ -1,17 +1,16 @@
 #include<iostream>
-using namespace std;
 
-//defining the process as structure
+
 struct process
 {
-	int id;		//Process Id
-	int pr;		//Process Priority
-	int bt;		//Process Burst Time
-	int at;		//Process arrival time
-	int wt;		//Process Waiting Time
-	int ct;		//Process Completion time
-	int tat;	//Process Turn Aroung Time	
-	bool flag;	//Flag to check wheather a process is executed or not 
+	int id;		
+	int pr;		
+	int bt;		
+	int at;		
+	int wt;		
+	int ct;		
+	int tat;	
+	bool flag;	
 };
 
 
@@ -19,11 +18,11 @@ struct process
 void showdata(struct process * array[],int n)
 {
 		struct process *p;
-		cout<<"\nPro\t"<<"Pri\t"<<"Arr\t"<<"Bur\tWait\tCom\tTurn\n";
+		std::cout<<"\nPro\t"<<"Pri\t"<<"Arr\t"<<"Bur\tWait\tCom\tTurn\n";
 		for(int i=0;i<n;i++)
 		{
 			p=array[i];
-			cout<<p->id<<"\t"<<p->pr<<"\t"<<p->at<<"\t"<<p->bt<<"\t"<<p->wt<<"\t"<<p->ct<<"\t"<<p->tat<<"\n";
+			std::cout<<p->id<<"\t"<<p->pr<<"\t"<<p->at<<"\t"<<p->bt<<"\t"<<p->wt<<"\t"<<p->ct<<"\t"<<p->tat<<"\n";
 		}
 }
 
@@ -31,7 +30,7 @@ int execorder[20];
 int ct;				//current time
 int value=0;		//To check the minimum arrival time of process and take it as starting time
 
-//To check all the data of process
+//check all the data of process
 int priority(struct process * array[],int n)
 {
 
@@ -120,7 +119,7 @@ int priority(struct process * array[],int n)
 	}
 	
 	
-	cout<<exec->id<<"->";
+	std::cout<<exec->id<<"->";
 	exec->tat=sum+exec->bt-exec->at;
 	exec->wt=exec->tat-exec->bt;
 	exec->flag=1;
@@ -144,18 +143,18 @@ void awt_atat(struct process * array[],int n)
 		wt=wt+p->wt;
 		tat=tat+p->tat;
 	}
-	cout<<"\nWt"<<wt<<"tat "<<tat;
+	std::cout<<"\nWt = "<<wt<<"   tat =  "<<tat;
 	awt=wt/n;
 	atat=tat/n;
-	cout<<"\nAverage Waiting Time="<<awt<<" Average Turnaround Time is="<<atat;
+	std::cout<<"\nAverage Waiting Time="<<awt<<" Average Turnaround Time is="<<atat;
 }
 	
 
 int main()
 {
 	int n;
-	cout<<"Enter number of process ";
-	cin>>n;
+	std::cout<<"Enter number of process: ";
+	std::cin>>n;
 
 	
 	struct process * array[20];
@@ -167,10 +166,13 @@ int main()
 		array[i]=p;
 		p->id=i+1;
 		
-		cout<<"\nEnter priority and arrival time and burst time for process"<<i+1<<" ";
-		cin>>pr;
-		cin>>a;
-		cin>>b;
+		std::cout<<"\nEnter priority and arrival time and burst time for process "<<i+1<<":\n";
+		std::cout << "Enter Priority: ";
+		std::cin>>pr;
+		std::cout << "\nEnter Arrival Time: ";
+		std::cin>>a;
+		std::cout << "\nEnter Burst Time: ";
+		std::cin>>b;
 		
 		
 		p->bt=b;
@@ -206,7 +208,7 @@ int main()
 	ct=start_time;
 
 	
-	cout<<"\nProcesses Execution Order ";
+	std::cout<<"\nOrder ";
 	priority(array,n);
 	
 	showdata(array,n);
