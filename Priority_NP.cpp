@@ -27,7 +27,7 @@ void showdata(struct process * array[],int n)
 }
 
 int execorder[20];
-int ct;				//current time
+int ct;			
 int value=0;		//To check the minimum arrival time of process and take it as starting time
 
 //check all the data of process
@@ -186,7 +186,7 @@ int main()
 		
 	}
 
-	//Finding the start time of execution of process  start time is minimum among all of the arrival times and minimum arrival time need not to be zero in each case
+	//Find the start time of execution of process  start time is minimum among all of the arrival times and minimum arrival time need not to be zero in each case
 	int start_time=0;
 	struct process *p;
 	p=array[0];
